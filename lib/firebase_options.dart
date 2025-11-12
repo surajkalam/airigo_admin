@@ -23,15 +23,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         return windows;
       case TargetPlatform.linux:
@@ -58,10 +52,32 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBbU3xaTaB9hjBlNa3PR-WJlKpmbVzcXPE',
-    appId: '1:273633366599:android:deb49befd838315df4d762',
+    appId: '1:273633366599:android:47dcbf7b76c169dbf4d762',
     messagingSenderId: '273633366599',
     projectId: 'airigo-jobs',
     storageBucket: 'airigo-jobs.firebasestorage.app',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyBaCRyLKsgemEjD-5lhNzR4YUX_BJsZVyE',
+    appId: '1:273633366599:ios:baeabbea59a61adaf4d762',
+    messagingSenderId: '273633366599',
+    projectId: 'airigo-jobs',
+    storageBucket: 'airigo-jobs.firebasestorage.app',
+    androidClientId: '273633366599-p67jj3vgurkr8f3j5k2cstj9q5hbvmgd.apps.googleusercontent.com',
+    iosClientId: '273633366599-rc3pl101e6ahrbnlgrndrauk71jneo4h.apps.googleusercontent.com',
+    iosBundleId: 'com.example.jobapp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBaCRyLKsgemEjD-5lhNzR4YUX_BJsZVyE',
+    appId: '1:273633366599:ios:baeabbea59a61adaf4d762',
+    messagingSenderId: '273633366599',
+    projectId: 'airigo-jobs',
+    storageBucket: 'airigo-jobs.firebasestorage.app',
+    androidClientId: '273633366599-p67jj3vgurkr8f3j5k2cstj9q5hbvmgd.apps.googleusercontent.com',
+    iosClientId: '273633366599-rc3pl101e6ahrbnlgrndrauk71jneo4h.apps.googleusercontent.com',
+    iosBundleId: 'com.example.jobapp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
@@ -73,4 +89,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'airigo-jobs.firebasestorage.app',
     measurementId: 'G-DXDL5BG8RX',
   );
+
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jobapp/Authentication/provider.dart';
+
 import 'package:jobapp/core/services/local_storage_service.dart';
 
 class CheckLoginSignupScreen extends ConsumerStatefulWidget {
@@ -15,7 +15,6 @@ class CheckLoginSignupScreen extends ConsumerStatefulWidget {
 
 class _CheckLoginSignupScreenState
     extends ConsumerState<CheckLoginSignupScreen> {
-  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -28,30 +27,20 @@ class _CheckLoginSignupScreenState
     final isLoggedIn = localStorage.isLoggedIn;
     final userType = localStorage.userType;
 
-    if (isLoggedIn && userType != null) {
+    if (isLoggedIn && userType == 'admin') {
       // Delay navigation to ensure proper initialization
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (userType == 'jobseeker') {
-          context.go('/job-nav');
-        } else {
-          context.go('/recuiter-nav');
-        }
+        context.go('/admin-dashboard');
       });
     }
   }
 
   void _navigateToLogin() {
-    final userType = _selectedIndex == 0
-        ? UserType.jobseeker
-        : UserType.recruiter;
-    context.push('/login', extra: userType.name);
+    context.push('/login', extra: 'admin');
   }
 
   void _navigateToSignup() {
-    final userType = _selectedIndex == 0
-        ? UserType.jobseeker
-        : UserType.recruiter;
-    context.push('/signup', extra: userType.name);
+    context.push('/signup', extra: 'admin');
   }
 
   @override
@@ -76,102 +65,35 @@ class _CheckLoginSignupScreenState
                   children: [
                     Padding(padding: EdgeInsets.only(top: height * 0.1)),
                     SizedBox(height: height * 0.05),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: height * 0.045,
-                          width: width * 0.8,
-                          decoration: BoxDecoration(
-                            color: colorScheme.surface.withValues(alpha: 0.9),
-                            borderRadius: BorderRadius.circular(width * 0.05),
-                            boxShadow: [
-                              BoxShadow(
-                                color: colorScheme.shadow.withValues(
-                                  alpha: 0.2,
-                                ),
-                                spreadRadius: 1,
-                                blurRadius: 6,
-                                offset: const Offset(1, 2),
+                    Center(
+                      child: Container(
+                        height: height * 0.06,
+                        width: width * 0.6,
+                        decoration: BoxDecoration(
+                          color: colorScheme.primary,
+                          borderRadius: BorderRadius.circular(width * 0.05),
+                          boxShadow: [
+                            BoxShadow(
+                              color: colorScheme.shadow.withValues(
+                                alpha: 0.2,
                               ),
-                            ],
-                          ),
-                          child: Row(
-                            children: [
-                              // Jobseeker Option
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _selectedIndex = 0;
-                                  });
-                                  ref.read(selectionProvider.notifier).state =
-                                      UserType.jobseeker;
-                                },
-                                child: Container(
-                                  width: width * 0.4,
-                                  decoration: BoxDecoration(
-                                    color: _selectedIndex == 0
-                                        ? colorScheme.primary
-                                        : colorScheme.surfaceContainerHighest,
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(width * 0.05),
-                                      bottomLeft: Radius.circular(width * 0.05),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Jobseeker",
-                                      style: GoogleFonts.poppins(
-                                        fontSize: width * 0.04,
-                                        color: _selectedIndex == 0
-                                            ? colorScheme.onPrimary
-                                            : colorScheme.onSurface,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              // Recruiter Option
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _selectedIndex = 1;
-                                  });
-                                  ref.read(selectionProvider.notifier).state =
-                                      UserType.recruiter;
-                                },
-                                child: Container(
-                                  width: width * 0.4,
-                                  decoration: BoxDecoration(
-                                    color: _selectedIndex == 1
-                                        ? colorScheme.primary
-                                        : colorScheme.surfaceContainerHighest,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(width * 0.05),
-                                      bottomRight: Radius.circular(
-                                        width * 0.05,
-                                      ),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Recruiter",
-                                      style: GoogleFonts.poppins(
-                                        fontSize: width * 0.04,
-                                        color: _selectedIndex == 1
-                                            ? colorScheme.onPrimary
-                                            : colorScheme.onSurface,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                              spreadRadius: 1,
+                              blurRadius: 6,
+                              offset: const Offset(1, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Admin Portal",
+                            style: GoogleFonts.poppins(
+                              fontSize: width * 0.05,
+                              color: colorScheme.onPrimary,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
-                      ],
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(

@@ -8,7 +8,7 @@ import 'package:jobapp/core/material_theme.dart';
 import 'package:jobapp/core/typography.dart';
 import 'package:jobapp/core/services/local_storage_service.dart';
 import 'package:jobapp/core/providers/theme_provider.dart';
-import 'package:jobapp/Authentication/user_provider.dart';
+
 import 'package:jobapp/firebase_options.dart';
 
 void main() async {
@@ -37,7 +37,6 @@ class _MainAppState extends ConsumerState<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(authListenerProvider);
     final materialTheme = MaterialTheme(textTheme);
     ThemeMode themeMode;
     try {

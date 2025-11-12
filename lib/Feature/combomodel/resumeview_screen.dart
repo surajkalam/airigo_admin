@@ -12,6 +12,8 @@ class ResumeViewerScreen extends StatelessWidget {
     required this.resumeUrl,
     required this.resumeFileName,
   });
+  
+
   Future<void> _launchResume() async {
     try {
       final Uri url = Uri.parse(resumeUrl);
@@ -22,6 +24,7 @@ class ResumeViewerScreen extends StatelessWidget {
       throw Exception('Failed to open resume: $e');
     }
   }
+
   void _showDownloadOptions(BuildContext context, double height, double width) {
     showModalBottomSheet(
       context: context,

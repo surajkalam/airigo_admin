@@ -48,6 +48,50 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273633366599:android:deb49befd838315df4d762",
+        "android_client_info": {
+          "package_name": "com.aptitsolutions.airigo_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273633366599-dqq2hmcfgbdf7733p3ebqjqg93mdi4oc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aptitsolutions.airigo_admin",
+            "certificate_hash": "8527ba16773ae0e5f92642aad9b7692787b670df"
+          }
+        },
+        {
+          "client_id": "273633366599-tebqt4mcm303ea3v6816l5jmlg88cdnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbU3xaTaB9hjBlNa3PR-WJlKpmbVzcXPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273633366599-tebqt4mcm303ea3v6816l5jmlg88cdnc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "273633366599-rc3pl101e6ahrbnlgrndrauk71jneo4h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.jobapp"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
